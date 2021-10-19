@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require './lib/user'
 require './lib/booking'
 require './lib/listing'
+require './lib/database_connection'
 
 require 'pg'
 require_relative './database_connection_setup'
@@ -34,11 +35,19 @@ class BnB < Sinatra::Base
 
   post '/login' do
     # Collects params[:email], params[:password]
-    User.login(email: params[:email], password: params[:password])
-    redirect '/spaces'
+    email = params[:email]
+    password = params[:password]
+
+    if User.authenticate(email: email, password: password)
+      session[:user] = User.login(email: email, password: password)
+      redirect '/spaces'
+    else
+      redirect '/login'
+    end
   end
 
   get '/spaces' do
+    @username = session[:user].username
     @all_listings = Listing.all
     erb :'spaces/all'
   end

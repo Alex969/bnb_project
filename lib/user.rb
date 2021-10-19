@@ -16,7 +16,27 @@ class User
   end
 
   def self.login(email:, password:)
-    # SQL query to check email against password
+    query = DatabaseConnection.query(
+      "SELECT *
+      FROM users
+      WHERE email = $1 AND password = $2
+      ;", [email, password]
+    ).first
+    User.new(id: query['id'], username: query['username'], email: query['email'])
+  end
 
+  def self.authenticate(email:, password:)
+    query = DatabaseConnection.query(
+      "SELECT EXISTS (
+        SELECT *
+        FROM users
+        WHERE email = $1 AND password = $2
+      );", [email, password]
+    ).first
+    if query['exists'] == "t"
+      true
+    else
+      false
+    end
   end
 end
