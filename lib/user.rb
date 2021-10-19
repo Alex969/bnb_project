@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User
-  attr_reader :id, :name, :email
+  attr_reader :id, :username, :email
 
   def initialize(id:, username:, email:)
     @id = id
@@ -10,8 +10,8 @@ class User
   end
 
   def self.sign_up(username:, email:, password:)
-    query = DatabaseConnection.query("INSERT INTO users(username, email, password)
-    VALUES($1, $2, $3) RETURNING id, username, email;",[name, email, password]).first
+    query = DatabaseConnection.query("INSERT INTO users (username, email, password)
+    VALUES($1, $2, $3) RETURNING id, username, email;",[username, email, password]).first
     User.new(id: query['id'], username: query['username'], email: query['email'])
   end
 

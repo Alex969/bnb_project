@@ -11,7 +11,6 @@ require_relative './database_connection_setup'
 
 class BnB < Sinatra::Base
   enable :sessions, :method_override
-  
   configure :development do
     register Sinatra::Reloader
   end
