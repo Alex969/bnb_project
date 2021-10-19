@@ -1,8 +1,13 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+
 require './lib/user'
 require './lib/booking'
 require './lib/listing'
+
+require 'pg'
+require_relative './database_connection_setup'
+
 
 class BnB < Sinatra::Base
 
