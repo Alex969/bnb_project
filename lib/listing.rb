@@ -1,18 +1,21 @@
 # frozen_string_literal: true
 
 class Listing
-  attr_reader :name, :description, :price, :available_date
+  attr_reader id:,:name, :description, :price_per_night, :available_date, :user_id
 
-  def initialize(name:, description:, price:, available_date:)
-    @name = name
+  def initialize(id:, title:, description:, price_per_night:, available_date:, user_id:)
+    @id = id
+    @title = title
     @description = description
-    @price = price
+    @price_per_night = price_per_night
     @available_date = available_date
+    @user_id
   end
 
-  def self.create(name:, description:, price:, available_date:)
-    # create object in database and wrap in below
-    Listing.new(name: name, description: description, price: price, available_date: available_date)
+  def self.create(id:, name:, description:, price:, available_date:, user_id:)
+    # PG.connect.. INSTERT listings id titlel.... Returning id tile len
+    Listing.new(id: id, title: title, description: description, price_per_night: price_per_night, available_date: available_date, user_id: user_id)
+    INSERT INTO bookings 
   end
 
   def self.all
