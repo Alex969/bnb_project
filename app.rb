@@ -10,8 +10,8 @@ require_relative './database_connection_setup'
 
 
 class BnB < Sinatra::Base
-
   enable :sessions, :method_override
+  
   configure :development do
     register Sinatra::Reloader
   end
@@ -40,31 +40,39 @@ class BnB < Sinatra::Base
   end
 
   get '/spaces' do
-    erb :spaces
+    erb :'spaces/all'
   end
 
   get '/spaces/create' do
     # A page to put a space up
+    erb :'spaces/create'
   end
 
   post '/spaces/create' do
-    # Collects params[:name], params[:]
+    # Collects params[:name], params[:description], params[:price], params[:avail_from], params[avail_to]
+    redirect '/spaces'
   end
 
-  get '/spaces/:id' do
+  get '/spaces/:space_id/view' do
     # Display a specific space
     # Maybe has a calender with available dates?
-    # Maybe has a list of hyperlinks for available dates that
-    # go to booking confirmation page
+    # Maybe has a list of hyperlinks for available dates
+    # Dates go to booking confirmation page (or skip)
+    # erb :'spaces/individual'
   end
 
-  get 'spaces/:id/confirm' do
+  get 'spaces/:space_id/confirm' do
     # Booking confirmation page - neccessary?
+    # erb :'booking/summary'
   end
 
-  post '/spaces/:id/confirm' do
-    # 
+  post '/spaces/:space_id/confirm' do
+    # Collects params[:space_id](inherently collects this in the path), params[:user_id], params[:date]
   end
 
-
+  get '/requests' do
+    # Displays list of requests made ->
+    # Displays list of requests receieved
+    # erb :'requests/display'
+  end
 end
