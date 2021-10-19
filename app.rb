@@ -1,9 +1,17 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+
+require './lib/user'
+require './lib/booking'
+require './lib/listing'
+
 require 'pg'
 require_relative './database_connection_setup'
 
+
 class BnB < Sinatra::Base
+  enable :sessions, :method_override
+  
   configure :development do
     register Sinatra::Reloader
   end
@@ -16,7 +24,8 @@ class BnB < Sinatra::Base
   end
 
   post '/register' do
-    # Collects params[:name], params[:email], params[:password]
+    # Collects params[:username], params[:email], params[:password]
+    User.sign_up(username: params[:username], email: params[:email], password: params[:password])
     redirect '/login'
   end
 
@@ -26,6 +35,7 @@ class BnB < Sinatra::Base
 
   post '/login' do
     # Collects params[:email], params[:password]
+    User.login(email: params[:email], password: params[:password])
     redirect '/spaces'
   end
 
