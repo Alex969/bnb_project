@@ -12,7 +12,6 @@ require_relative './database_connection_setup'
 
 class BnB < Sinatra::Base
   enable :sessions, :method_override
-  
   configure :development do
     register Sinatra::Reloader
   end
@@ -49,6 +48,7 @@ class BnB < Sinatra::Base
 
   get '/spaces' do
     @username = session[:user].username
+    @all_listings = Listing.all
     erb :'spaces/all'
   end
 

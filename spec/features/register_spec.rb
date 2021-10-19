@@ -1,3 +1,4 @@
+
 feature 'Register' do
   scenario 'allows a user to register' do
     visit('/')
