@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Listing
-  attr_reader id:,:name, :description, :price_per_night, :available_date, :user_id
+  attr_reader :id, :name, :description, :price_per_night, :available_date, :user_id
 
   def initialize(id:, title:, description:, price_per_night:, available_date:, user_id:)
     @id = id

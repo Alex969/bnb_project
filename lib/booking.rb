@@ -26,5 +26,5 @@ class Booking
 
   # def send_owner_request(listing_id:, date:)
     
-  end
+  # end
 end
