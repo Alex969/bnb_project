@@ -40,46 +40,52 @@ class BnB < Sinatra::Base
 
     if User.authenticate(email: email, password: password)
       session[:user] = User.login(email: email, password: password)
-      redirect '/spaces'
+      redirect '/listings'
     else
       redirect '/login'
     end
   end
 
-  get '/spaces' do
+  get '/listings' do
     @username = session[:user].username if session[:user]
     @all_listings = Listing.all
-    erb :'spaces/all'
+    erb :'listings/all'
   end
 
-  get '/spaces/create' do
-    # A page to put a space up
-    erb :'spaces/create'
+  get '/listings/create' do
+    erb :'listings/create'
   end
 
-  post '/spaces/create' do
-    # Collects params[:name], params[:description], params[:price], params[:avail_from], params[avail_to]
-    redirect '/spaces'
+  post '/listings/create' do
+    Listing.create(
+        title: params[:name], 
+        description: params[:description], 
+        price_per_night: params[:price],
+        avail_from: params[:avail_from],
+        avail_to: params[:avail_to],
+        user_id: session[:user].id
+      )
+    redirect '/listings'
   end
 
-  get '/spaces/:space_id/view' do
-    # Display a specific space
-    # Maybe has a calender with available dates?
-    # Maybe has a list of hyperlinks for available dates
-    # Dates go to booking confirmation page (or skip)
-    # erb :'spaces/individual'
+  get '/listings/:listing_id/view' do
+    redirect '/login' unless session[:user]
+    @current_user = session[:user]
+    @current_listing = Listing.find(params[:listing_id])
+    # @available_dates = Booking.available(params[:listing_id])
+    erb :'listings/view'
   end
 
-  get 'spaces/:space_id/confirm' do
+  get 'listings/:listing_id/confirm' do
     # Booking confirmation page - neccessary?
     # erb :'booking/summary'
   end
 
-  post '/spaces/:space_id/confirm' do
-    # Collects params[:space_id](inherently collects this in the path), params[:user_id], params[:date]
+  post '/listings/:listing_id/confirm' do
+    # Collects params[:listing_id](inherently collects this in the path), session[:user].id, params[:date]
   end
 
-  get '/requests' do
+  get '/listings' do
     # Displays list of requests made ->
     # Displays list of requests receieved
     # erb :'requests/display'
