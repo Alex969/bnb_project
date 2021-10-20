@@ -10,14 +10,26 @@ class Booking
     @date = date
   end
 
+  def self.create(listing_id:, avail_from:, avail_to:)
+    date_range(avail_from, avail_to).each do |date|
+      DatabaseConnection.query('INSERT INTO bookings(listing_id, date) VALUES ($1, $2)', [listing_id, date])
+    end
+  end
+
   def self.available(listing_id:)
-    query = DatabaseConnection.query("SELECT * FROM bookings WHERE listing_id=$1", [listing_id])
-  
+    query = DatabaseConnection.query('SELECT * FROM bookings WHERE listing_id=$1', [listing_id])
+
     all_bookings = query.map do |row|
       Booking.new(id: row['id'], user_id: row['user_id'], listing_id: row['listing_id'], date: row['date'])
     end
 
-    all_available_bookings = all_bookings.select { |booking| booking.user_id == nil}
+    all_available_bookings = all_bookings.select { |booking| booking.user_id.nil? }
+  end
+
+  def self.date_range(avail_from, avail_to)
+    start_date_object = Date.parse(avail_from)
+    end_date_object = Date.parse(avail_to)
+    (start_date_object..end_date_object).map(&:to_s)
   end
 
   # def self.request_booking(user_id:, listing_id:, date:)
@@ -35,6 +47,6 @@ class Booking
   # end
 
   # def send_owner_request(listing_id:, date:)
-    
+
   # end
 end

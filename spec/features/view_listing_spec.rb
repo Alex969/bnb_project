@@ -6,7 +6,7 @@ feature 'View Individual Listing' do
 
     visit('/listings')
     click_link 'Test Listing'
-    
+
     expect(page).to have_content 'This is a test space - really lovely.'
   end
 end
