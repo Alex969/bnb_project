@@ -28,6 +28,7 @@
       <%= @current_listing.description %>
     </p>
     <br><br>
+    <%= flash[:notice] %>
     <ul>
         <%@available_dates.each do |booking|%>
          <li>

@@ -8,9 +8,11 @@ require './lib/database_connection'
 
 require 'pg'
 require_relative './database_connection_setup'
+require 'sinatra/flash'
 
 class BnB < Sinatra::Base
   enable :sessions, :method_override
+  register Sinatra::Flash
   configure :development do
     register Sinatra::Reloader
   end
@@ -79,6 +81,7 @@ class BnB < Sinatra::Base
     puts params[:booking_id]
     puts params[:listing_id]
     puts session[:user].id
+    flash[:notice] = "Your booking has been requested"
     redirect "/listings/#{params[:listing_id]}/view"
   end
 
