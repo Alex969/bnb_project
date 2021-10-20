@@ -17,13 +17,9 @@ class BnB < Sinatra::Base
 
   get '/' do
     erb :'auth/register'
-    # We could make this page the sign up page [post -> /register]
-    # There is a link to logging in -> /login
-    # Link to view all listings -> /all
   end
 
   post '/register' do
-    # Collects params[:username], params[:email], params[:password]
     User.sign_up(username: params[:username], email: params[:email], password: params[:password])
     redirect '/login'
   end
@@ -33,7 +29,6 @@ class BnB < Sinatra::Base
   end
 
   post '/login' do
-    # Collects params[:email], params[:password]
     email = params[:email]
     password = params[:password]
 
