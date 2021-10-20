@@ -31,15 +31,17 @@
     <%= flash[:notice] %>
     <ul>
         <%@available_dates.each do |booking|%>
-         <li>
-         <h2><%=booking.date%></h2>
-         <form action="/listings/view" method="post">
-         <input type='hidden' name='listing_id' value='<%=@current_listing.id%>'/>
-         <input type='hidden' name='booking_id' value='<%=booking.id%>'/>
+          <div class="column">
+            <%=booking.date%>
+          </div>
+          <div class="column">
+            <form action="/listings/view" style="text-align:left;" method="post">
+              <input type='hidden' name='listing_id' value='<%=@current_listing.id%>'/>
+              <input type='hidden' name='booking_id' value='<%=booking.id%>'/>
          
-         <input type="submit" value="Request Booking">
-         </form>
-         </li>
+              <input type="submit" value="Request Booking"/>
+            </form>
+          </div>
         <%end%>
     </ul>
     
