@@ -60,6 +60,8 @@ class Listing
       user_id: query['user_id']
     )
 
+  end
+
 
   private
 
