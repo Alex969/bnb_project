@@ -3,27 +3,27 @@
 require 'booking'
 
 describe Booking do
-  describe '.request_booking' do
-    xit 'should request booking' do
-      listing = double('listing')
-      booking = Booking.request_booking(listing: listing, date: 18 / 10 / 2021)
+  describe '.create' do
+    it 'creates a booking' do
+      user = User.sign_up(
+        username: 'test',
+        email: 'test@test.com',
+        password: 'password'
+      )
+      listing = Listing.create(
+        title: 'Cottage Heaven',
+        description: 'My cottage in the woods',
+        price_per_night: 50,
+        user_id: user.id
+      )
+      date_one = '2021-01-01'
+      date_two = '2021-01-03'
+      booking = Booking.create(listing_id: listing.id, avail_from: date_one, avail_to: date_two)
 
-      expect(booking).to be_a Booking
+      expect(booking).to be_a Array
+      expect(booking.length).to eq 3
+      expect(booking).to include date_one
+      expect(booking).to include date_two
     end
   end
-
-  describe '.approve_booking' do
-    xit 'should approve a valid booking' do
-      # connect to database - booking table
-      listing = double('listing')
-      booking = Booking.request_booking(listing: listing, date: 18 / 10 / 2021)
-      approve_booking(booking)
-      # expect booking table to have user_id not null (user id should be the id of person making booking)
-    end
-  end
-
-  describe '.available' do
-    # We need user id, listing id 
-#     Booking.available(listing id)
-# expecting an array of Booking objects with no user id
-  end
+end

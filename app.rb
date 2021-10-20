@@ -9,7 +9,6 @@ require './lib/database_connection'
 require 'pg'
 require_relative './database_connection_setup'
 
-
 class BnB < Sinatra::Base
   enable :sessions, :method_override
   configure :development do
@@ -57,14 +56,17 @@ class BnB < Sinatra::Base
   end
 
   post '/listings/create' do
-    Listing.create(
-        title: params[:name], 
-        description: params[:description], 
-        price_per_night: params[:price],
-        avail_from: params[:avail_from],
-        avail_to: params[:avail_to],
-        user_id: session[:user].id
-      )
+    listing = Listing.create(
+      title: params[:name],
+      description: params[:description],
+      price_per_night: params[:price],
+      user_id: session[:user].id
+    )
+    Booking.create(
+      listing_id: listing.id,
+      avail_from: params[:avail_from],
+      avail_to: params[:avail_to]
+    )
     redirect '/listings'
   end
 
@@ -72,7 +74,7 @@ class BnB < Sinatra::Base
     redirect '/login' unless session[:user]
     @current_user = session[:user]
     @current_listing = Listing.find(params[:listing_id])
-    # @available_dates = Booking.available(params[:listing_id])
+    @available_dates = Booking.available(listing_id: params[:listing_id])
     erb :'listings/view'
   end
 

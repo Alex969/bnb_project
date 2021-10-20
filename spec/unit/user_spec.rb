@@ -25,7 +25,6 @@ describe User do
   end
 
   describe '.authenticate' do
-
     it 'authenticates on correct user' do
       User.sign_up(username: 'Marianne', email: 'hello@example.com', password: 'password123')
       login = User.authenticate(email: 'hello@example.com', password: 'password123')

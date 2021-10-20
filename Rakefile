@@ -7,8 +7,8 @@ task :setup do
     connection = PG.connect
     begin
       connection.exec("CREATE DATABASE #{db};")
-    rescue => exception
-      p "Database with a same name already exists" # Implement overwritting past versions
+    rescue StandardError => e
+      p 'Database with a same name already exists' # Implement overwritting past versions
     else
       connection = PG.connect(dbname: db)
       connection.exec('CREATE TABLE users(id SERIAL PRIMARY KEY, username varchar(60), email varchar(60), password varchar(60));')

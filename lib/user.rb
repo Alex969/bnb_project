@@ -11,7 +11,7 @@ class User
 
   def self.sign_up(username:, email:, password:)
     query = DatabaseConnection.query("INSERT INTO users (username, email, password)
-    VALUES($1, $2, $3) RETURNING id, username, email;",[username, email, password]).first
+    VALUES($1, $2, $3) RETURNING id, username, email;", [username, email, password]).first
     User.new(id: query['id'], username: query['username'], email: query['email'])
   end
 
@@ -33,10 +33,6 @@ class User
         WHERE email = $1 AND password = $2
       );", [email, password]
     ).first
-    if query['exists'] == "t"
-      true
-    else
-      false
-    end
+    query['exists'] == 't'
   end
 end
