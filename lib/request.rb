@@ -1,9 +1,12 @@
 class Request
 
- def self.create(booking_id:, user_id:)
+  def initialize(booking_id:, user_id:)
+
+  end
 
 
-
- end
+  def self.create(booking_id:, user_id:)
+    Request.new(booking_id: booking_id, user_id: user_id)
+  end
 
 end

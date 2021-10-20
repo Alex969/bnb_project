@@ -1,30 +1,20 @@
 # frozen_string_literal: true
 
 class Booking
-  attr_reader :id, :listing_id, :date
+  attr_reader :id, :user_id, :listing_id, :date
 
-  def initialize(id:, listing_id:, date:)
+  def initialize(user_id=nil,id:, listing_id:, date:)
     @id = id
+    @user_id = user_id
     @listing_id = listing_id
     @date = date
   end
 
-  # def self.create(listing_id:, avail_from:, avail_to:)
-  #   start_date_object = Date.parse(avail_from)
-  #   end_date_object = Date.parse(avail_to)
-  #   date_array = (start_date_object..end_date_object).map(&:to_s)
-
-  #   counter = 0
-  #   while counter < date_array.length do
-  #     DatabaseConnection.query('INSERT INTO bookings(listing_id, date) VALUES ($1, $2) RETURNING id, listing_id, date;', [listing_id, date])
-  #     counter += 1
-  #   end
-
-  # end
-
   def self.create(listing_id:, avail_from:, avail_to:)
     date_range(avail_from, avail_to).map do |date|
-      query = DatabaseConnection.query('INSERT INTO bookings(listing_id, date) VALUES ($1, $2) RETURNING id, listing_id, date;', [listing_id, date]).first
+      query = DatabaseConnection.query('INSERT INTO bookings
+      (listing_id, date) VALUES ($1, $2) 
+      RETURNING id, listing_id, date;', [listing_id, date]).first
       Booking.new(id: query['id'], listing_id: query['listing_id'], date: query['date'])
     end
   end

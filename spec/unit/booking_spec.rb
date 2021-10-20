@@ -22,8 +22,8 @@ describe Booking do
 
       expect(booking).to be_a Array
       expect(booking.length).to eq 3
-      expect(booking).to include date_one
-      expect(booking).to include date_two
+      expect(booking[0].date).to eq date_one
+      expect(booking[2].date).to eq date_two
     end
   end
 end
