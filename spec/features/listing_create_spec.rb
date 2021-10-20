@@ -1,5 +1,7 @@
 feature 'Create a new space' do
   scenario 'Creates a new space and displays on all' do
+    sign_up
+    log_in
     visit('/spaces')
     click_link 'Post a new Space!'
     fill_in 'name', with: 'Test Space'

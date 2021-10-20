@@ -5,6 +5,7 @@ require 'capybara/rspec'
 require 'rspec'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'setup_test_db'
+require "features/web_helpers.rb"
 
 Capybara.app = BnB
 

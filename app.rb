@@ -47,7 +47,7 @@ class BnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @username = session[:user].username
+    @username = session[:user].username if session[:user]
     @all_listings = Listing.all
     erb :'spaces/all'
   end
