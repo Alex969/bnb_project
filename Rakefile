@@ -14,6 +14,7 @@ task :setup do
       connection.exec('CREATE TABLE users(id SERIAL PRIMARY KEY, username varchar(60), email varchar(60), password varchar(60));')
       connection.exec('CREATE TABLE listings(id SERIAL PRIMARY KEY, title varchar(60), description varchar(300), price_per_night DECIMAL(10,2), user_id int REFERENCES users(id));')
       connection.exec('CREATE TABLE bookings(id SERIAL PRIMARY KEY, user_id int REFERENCES users(id), listing_id int REFERENCES listings(id), date date);')
+      connection.exec('CREATE TABLE requests(id SERIAL PRIMARY KEY, booking_id int REFERENCES bookings(id), user_id int REFERENCES users(id));')
     end
   end
 end
