@@ -1,5 +1,5 @@
-feature 'Create a new space' do
-  scenario 'Creates a new space and displays on all' do
+feature 'Create a new Listing' do
+  scenario 'Creates a new listing and displays on all' do
     sign_up
     log_in
     visit('/listings')
