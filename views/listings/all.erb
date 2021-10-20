@@ -10,13 +10,13 @@
       <h2>
         Welcome <%= @username %>
       </h2>
-      <a href='/spaces/create'>Post a new Space!</a>
+      <a href='/listings/create'>Post a new Listing!</a>
       <br><br>
       <%@all_listings.each do |listing|%>
         <%=listing.title%>
       <%end%>
       <ul>
-        <a href='/spaces/1/view'>Test Space!</a>
+        <a href='/listings/1/view'>Test Listing!</a>
       </ul>
     </body>
   </html>
