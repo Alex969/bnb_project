@@ -8,6 +8,7 @@ require './lib/database_connection'
 
 require 'pg'
 require_relative './database_connection_setup'
+require 'sinatra/flash'
 
 class BnB < Sinatra::Base
   enable :sessions, :method_override
