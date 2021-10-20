@@ -1,1 +1,1 @@
-CREATE TABLE requests(id SERIAL PRIMARY KEY, booking_id int REFERENCES bookings(id), user_id int REFERENCES users(id));
+CREATE TABLE requests(id SERIAL PRIMARY KEY,listing_owner int REFERENCES listings(user_id) booking_id int REFERENCES bookings(id), user_id int REFERENCES users(id));

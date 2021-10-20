@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require './lib/user'
 require './lib/booking'
 require './lib/listing'
+require './lib/request'
 require './lib/database_connection'
 
 require 'pg'

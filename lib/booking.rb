@@ -12,8 +12,10 @@ class Booking
 
   def self.create(listing_id:, avail_from:, avail_to:)
     date_range(avail_from, avail_to).each do |date|
-      DatabaseConnection.query('INSERT INTO bookings(listing_id, date) VALUES ($1, $2)', [listing_id, date])
+      DatabaseConnection.query('INSERT INTO bookings(listing_id, date) VALUES ($1, $2) RETURNING id;', [listing_id, date])
     end
+      DatabaseConnection.query('SELECT id, user_id FROM bookings;').to_a
+    
   end
 
   def self.available(listing_id:)
