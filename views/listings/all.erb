@@ -14,7 +14,7 @@
       <br><br>
       <ul>
         <%@all_listings.each do |listing|%>
-          <%=listing.title%>
+          <a href='listings/<%=listing.id%>/view'><%=listing.title%></a>
         <%end%>
       </ul>
     </body>

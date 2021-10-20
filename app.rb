@@ -69,11 +69,11 @@ class BnB < Sinatra::Base
   end
 
   get '/listings/:listing_id/view' do
-    # Display a specific listing
-    # Maybe has a calender with available dates?
-    # Maybe has a list of hyperlinks for available dates
-    # Dates go to booking confirmation page (or skip)
-    # erb :'listings/individual'
+    redirect '/login' unless session[:user]
+    @current_user = session[:user]
+    @current_listing = Listing.find(params[:listing_id])
+    # @available_dates = Booking.available(params[:listing_id])
+    erb :'listings/view'
   end
 
   get 'listings/:listing_id/confirm' do
