@@ -87,4 +87,8 @@ class BnB < Sinatra::Base
     # Displays list of requests receieved
     # erb :'requests/display'
   end
+
+  get '/test' do
+    erb :'requests/display'
+  end
 end

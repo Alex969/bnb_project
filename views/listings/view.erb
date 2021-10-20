@@ -4,18 +4,30 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
     </head>
     <body>
+
+    <div class="banner">
+      <div class="banner_left">
+        <a href='/'>Register</a> | 
+        <a href='/login'>Login</a>
+      </div>
+      <div class="banner_right">  
+        <a href='/listings'>View all Listings</a> | 
+        <a href='/requests'>View all requests</a>
+      </div>
+    </div>
+
     <h1>
       <%= @current_listing.title %>
     </h2>
 
     <h2>
-      <%= @current_listing.price_per_night %> per night
+      £<%= @current_listing.price_per_night %> per night
     </h2>
-
+    <br><br>
     <p>
       <%= @current_listing.description %>
     </p>
-
+    <br><br>
     <ul>
       # SOME TABLE OF AVAILABLE DATES GOES HERE
     </ul>
