@@ -26,6 +26,8 @@ class Booking
     all_available_bookings = all_bookings.select { |booking| booking.user_id.nil? }
   end
 
+  private
+
   def self.date_range(avail_from, avail_to)
     start_date_object = Date.parse(avail_from)
     end_date_object = Date.parse(avail_to)
