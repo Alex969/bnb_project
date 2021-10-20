@@ -78,9 +78,13 @@ class BnB < Sinatra::Base
     erb :'listings/view'
   end
 
-  get 'listings/:listing_id/confirm' do
-    # Booking confirmation page - neccessary?
-    # erb :'booking/summary'
+  post '/listings/view' do
+    # Use params [:user_id] and [:booking_id] to INSERT INTO requests
+    puts "Request sent"
+    puts params[:booking_id]
+    puts params[:listing_id]
+    puts session[:user].id
+    redirect "/listings/#{params[:listing_id]}/view"
   end
 
   post '/listings/:listing_id/confirm' do
