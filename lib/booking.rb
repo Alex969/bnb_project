@@ -34,7 +34,7 @@ class Booking
     query = DatabaseConnection.query('SELECT * FROM bookings WHERE listing_id=$1', [listing_id])
 
     all_bookings = query.map do |row|
-      Booking.new(id: row['id'], user_id: row['user_id'], listing_id: row['listing_id'], date: row['date'])
+      Booking.new(id: row['id'], listing_id: row['listing_id'], date: row['date'])
     end
 
     all_available_bookings = all_bookings.select { |booking| booking.user_id.nil? }
