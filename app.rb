@@ -53,12 +53,18 @@ class BnB < Sinatra::Base
   end
 
   get '/listings/create' do
-    # A page to put a space up
     erb :'listings/create'
   end
 
   post '/listings/create' do
-    # Collects params[:name], params[:description], params[:price], params[:avail_from], params[avail_to]
+    Listing.create(
+        title: params[:name], 
+        description: params[:description], 
+        price_per_night: params[:price],
+        avail_from: params[:avail_from],
+        avail_to: params[:avail_to],
+        user_id: session[:user].id
+      )
     redirect '/listings'
   end
 
