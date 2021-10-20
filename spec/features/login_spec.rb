@@ -6,7 +6,7 @@ feature 'Logs in' do
     fill_in 'password', with: 'test123'
     click_button 'Submit'
 
-    expect(page).to have_content 'Welcome, Mr. Test'
+    expect(page).to have_content 'Welcome Mr. Test'
   end
 
   scenario 'Refuses incorrect login' do
