@@ -9,22 +9,20 @@ require './lib/database_connection'
 
 require 'pg'
 require_relative './database_connection_setup'
+require 'sinatra/flash'
 
 class BnB < Sinatra::Base
   enable :sessions, :method_override
+  register Sinatra::Flash
   configure :development do
     register Sinatra::Reloader
   end
 
   get '/' do
     erb :'auth/register'
-    # We could make this page the sign up page [post -> /register]
-    # There is a link to logging in -> /login
-    # Link to view all listings -> /all
   end
 
   post '/register' do
-    # Collects params[:username], params[:email], params[:password]
     User.sign_up(username: params[:username], email: params[:email], password: params[:password])
     redirect '/login'
   end
@@ -34,7 +32,6 @@ class BnB < Sinatra::Base
   end
 
   post '/login' do
-    # Collects params[:email], params[:password]
     email = params[:email]
     password = params[:password]
 
@@ -79,18 +76,21 @@ class BnB < Sinatra::Base
     erb :'listings/view'
   end
 
-  get 'listings/:listing_id/confirm' do
-    # Booking confirmation page - neccessary?
-    # erb :'booking/summary'
+  post '/listings/view' do
+    # Use params [:user_id] and [:booking_id] to INSERT INTO requests
+    puts "Request sent"
+    puts params[:booking_id]
+    puts params[:listing_id]
+    puts session[:user].id
+    flash[:notice] = "Your booking has been requested"
+    redirect "/listings/#{params[:listing_id]}/view"
   end
 
   post '/listings/:listing_id/confirm' do
     # Collects params[:listing_id](inherently collects this in the path), session[:user].id, params[:date]
   end
 
-  get '/listings' do
-    # Displays list of requests made ->
-    # Displays list of requests receieved
-    # erb :'requests/display'
+  get '/requests' do
+    erb :'requests/display'
   end
 end
