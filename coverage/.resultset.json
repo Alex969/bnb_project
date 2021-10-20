@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/database_connnection_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/database_connnection_spec.rb": {
         "lines": [
           1,
           null,
@@ -15,7 +15,6 @@
           1,
           1,
           1,
-          null,
           null,
           null,
           null,
@@ -31,7 +30,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/features/listing_create_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/features/listing_create_spec.rb": {
         "lines": [
           1,
           1,
@@ -51,7 +50,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/features/login_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/features/login_spec.rb": {
         "lines": [
           1,
           1,
@@ -75,7 +74,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/features/register_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/features/register_spec.rb": {
         "lines": [
           1,
           1,
@@ -90,7 +89,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/features/testing_infrastructure_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/features/testing_infrastructure_spec.rb": {
         "lines": [
           1,
           1,
@@ -100,7 +99,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/features/view_listing_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/features/view_listing_spec.rb": {
         "lines": [
           1,
           1,
@@ -116,7 +115,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/unit/booking_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/unit/booking_spec.rb": {
         "lines": [
           null,
           null,
@@ -149,7 +148,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/unit/listing_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/unit/listing_spec.rb": {
         "lines": [
           null,
           null,
@@ -194,7 +193,7 @@
           null
         ]
       },
-      "/Users/anthonyosmaston/Desktop/Projects/bnb_project/spec/unit/user_spec.rb": {
+      "/Users/kostas/OneDrive/Makers/bnb_project/spec/unit/user_spec.rb": {
         "lines": [
           null,
           null,
@@ -223,7 +222,6 @@
           null,
           null,
           1,
-          null,
           1,
           1,
           1,
@@ -241,6 +239,6 @@
         ]
       }
     },
-    "timestamp": 1634735301
+    "timestamp": 1634739034
   }
 }
