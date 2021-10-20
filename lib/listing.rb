@@ -17,7 +17,8 @@ class Listing
     (title, description, price_per_night) VALUES($1, $2, $3) 
     RETURNING id, title, description, price_per_night, user_id;",[title, description, price_per_night]
   ).first
-    Listing.new(
+    
+    listing = Listing.new(
       id: query['id'],
       title: query['title'],
       description: query['description'],
