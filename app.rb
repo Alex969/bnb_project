@@ -82,13 +82,7 @@ class BnB < Sinatra::Base
     # Collects params[:listing_id](inherently collects this in the path), session[:user].id, params[:date]
   end
 
-  get '/listings' do
-    # Displays list of requests made ->
-    # Displays list of requests receieved
-    # erb :'requests/display'
-  end
-
-  get '/test' do
+  get '/requests' do
     erb :'requests/display'
   end
 end
