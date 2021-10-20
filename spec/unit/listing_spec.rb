@@ -23,4 +23,6 @@ describe Listing do
       expect(list.length).to eq 2
     end
   end
+
+  describe ''
 end

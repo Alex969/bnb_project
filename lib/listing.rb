@@ -12,6 +12,7 @@ class Listing
   end
 
   def self.create(title:, description:, price_per_night:, avail_from:, avail_to:, user_id:)
+
     query = DatabaseConnection.query("INSERT INTO listings 
     (title, description, price_per_night) VALUES($1, $2, $3) 
     RETURNING id, title, description, price_per_night, user_id;",[title, description, price_per_night]
@@ -23,8 +24,13 @@ class Listing
       price_per_night: query['price_per_night'],
       user_id: query['user_id']
     )
-    # booking_query = DatabaseConnection.query("INSERT INTO bookings (")
-     # availto - availfrom .times create Booking instance until index reaches limit - availfrom +1 being the date.
+    
+    
+    date_range(avail_from, avail_to).each do |date|
+      DatabaseConnection.query("INSERT INTO bookings(listing_id, date) VALUES ($1, $2)", [listing.id, date])
+    end
+    
+
   end
 
  
@@ -40,7 +46,7 @@ class Listing
       )
     end
   end
-
+  
   def self.find(id)
     query = DatabaseConnection.query(
       "SELECT * FROM listings
@@ -53,5 +59,13 @@ class Listing
       price_per_night: query['price_per_night'],
       user_id: query['user_id']
     )
+
+
+  private
+
+  def self.date_range(avail_from, avail_to)
+    start_date_object = Date.parse(avail_from)
+    end_date_object = Date.parse(avail_to)
+    range = (start_date_object..end_date_object).map(&:to_s)
   end
 end

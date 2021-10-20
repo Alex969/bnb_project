@@ -21,4 +21,9 @@ describe Booking do
       # expect booking table to have user_id not null (user id should be the id of person making booking)
     end
   end
-end
+
+  describe '.available' do
+    # We need user id, listing id 
+#     Booking.available(listing id)
+# expecting an array of Booking objects with no user id
+  end
