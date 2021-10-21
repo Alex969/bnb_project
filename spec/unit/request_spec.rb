@@ -24,7 +24,4 @@ describe Request do
       expect(request_one).to be_a Request
     end
   end
-
-  describe '.find' do
-    it ""
 end

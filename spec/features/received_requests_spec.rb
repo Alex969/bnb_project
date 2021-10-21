@@ -8,9 +8,9 @@ feature "receive requests" do
     visit ("/listings")
     click_link("Test Listing")
     click_button('Request Booking', match: :first)
-    log_in # mr test!
+    log_in
     visit("/requests")
-    expect(page).to have_content("19/10/2021")
+    expect(page).to have_content("2021-10-19")
     expect(page).to have_content("John")
     expect(page).to have_content("Test Listing")
   end

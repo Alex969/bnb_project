@@ -18,10 +18,8 @@ class Request
       on bookings.listing_id = listings.id
       inner join users 
       on requests.user_id = users.id 
-      where listings.id = $1;", [user_id]
+      where listings.user_id = $1;", [user_id]
     )
     query.map { |hash| hash }
-    
   end
-
 end

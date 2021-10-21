@@ -91,6 +91,8 @@ class BnB < Sinatra::Base
   end
 
   get '/requests' do
+    redirect '/login' unless session[:user]
+    @received_requests = Request.find(user_id: session[:user].id)
     erb :'requests/display'
   end
 end
