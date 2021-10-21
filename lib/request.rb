@@ -17,7 +17,7 @@ class Request
 
   def self.find(user_id:)
     query = DatabaseConnection.query(
-      "select bookings.date, users.username, listings.title, listings.id from requests 
+      "select bookings.date, users.username, users.id AS user_id, bookings.id AS booking_id, listings.title, listings.id AS listing_id from requests 
       inner join bookings 
       on requests.booking_id = bookings.id
       inner join listings
@@ -31,7 +31,7 @@ class Request
 
 
   def self.all(user_id:)
-    query = DatabaseConnection.query("SELECT listings.title, bookings.date, listings.id
+    query = DatabaseConnection.query("SELECT listings.title, listings.id, bookings.date
       FROM requests
       INNER JOIN bookings 
       ON requests.booking_id = bookings.id
@@ -41,6 +41,12 @@ class Request
     query.map do | pending_booking |
       pending_booking
     end
-  end     
+  end   
+  
+  def self.approve(user_id:, booking_id:)
+    DatabaseConnection.query("UPDATE bookings SET user_id = $1 WHERE id = $2;",[user_id, booking_id])
+    DatabaseConnection.query("DELETE from requests WHERE booking_id = $1;", [booking_id])
+
+  end
 end
 

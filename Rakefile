@@ -27,3 +27,16 @@ task :drop_dbs do
     p "#{db} doesn't exist, nothing to drop"
   end
 end
+
+# task :fill_dbs do
+#   connection = PG.connect(dbname: 'bnb')
+#   # connection.exec()
+#   username = 'Test' 
+#   email = 'test@example.com'
+#   password = 'password123'
+#   title = 'Cottage Heaven',
+#   description = 'My cottage in the woods'
+#   price_per_night = 50
+  
+
+# end

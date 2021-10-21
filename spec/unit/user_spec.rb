@@ -26,8 +26,8 @@ describe User do
 
   describe '.authenticate' do
     it 'authenticates on correct user' do
-      User.sign_up(username: 'Marianne', email: 'hello@example.com', password: 'password123')
-      login = User.authenticate(email: 'hello@example.com', password: 'password123')
+      User.sign_up(username: 'Mr Test', email: 'test@example.com', password: 'password123')
+      login = User.authenticate(email: 'test@example.com', password: 'password123')
 
       expect(login).to eq true
     end
