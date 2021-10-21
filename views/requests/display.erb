@@ -37,9 +37,19 @@
         <h2>
           Received Requests:
         </h2>
+          <%@received_requests.each do |request|%>
+              <p>
+                <%=request['title']%>
+                <br>
+                <%=request['date']%>
+                <br>
+                <%=request['username']%>
+                <br><br><br>
+              </p>
+          <% end %>
+        </div>
       </div>
     </div>
-
     </body>
   </html>
   
