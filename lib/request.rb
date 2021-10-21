@@ -17,7 +17,7 @@ class Request
 
   def self.find(user_id:)
     query = DatabaseConnection.query(
-      "select bookings.date, users.username, listings.title from requests 
+      "select bookings.date, users.username, listings.title, listings.id from requests 
       inner join bookings 
       on requests.booking_id = bookings.id
       inner join listings
@@ -31,7 +31,7 @@ class Request
 
 
   def self.all(user_id:)
-    query = DatabaseConnection.query("SELECT listings.title, bookings.date 
+    query = DatabaseConnection.query("SELECT listings.title, bookings.date, listings.id
       FROM requests
       INNER JOIN bookings 
       ON requests.booking_id = bookings.id

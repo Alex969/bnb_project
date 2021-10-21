@@ -30,7 +30,12 @@
           Requests Made:
         </h2>
         <% @pending_bookings.each do |pending_booking| %>
-        <%= pending_booking["title"] %> -- <%= pending_booking["date"] %>
+          <p>
+            <a href='/listings/<%= pending_booking['id'] %>/view'><%= pending_booking["title"] %></a>
+            <br>
+            <%= pending_booking["date"] %>
+            <br><br><br>
+          </p>
         <%end%>
       </div>
       <div class="column">
@@ -39,7 +44,7 @@
         </h2>
           <%@received_requests.each do |request|%>
               <p>
-                <%=request['title']%>
+                <a href='/listings/<%= request['id'] %>/view'><%=request['title']%></a>
                 <br>
                 <%=request['date']%>
                 <br>
