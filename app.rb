@@ -83,14 +83,23 @@ class BnB < Sinatra::Base
     redirect "/listings/#{params[:listing_id]}/view"
   end
 
-  post '/listings/:listing_id/confirm' do
+  post '/requests' do
+    # /:booking_id/confirm'
+    flash[:approval_notice] = "Booking approved"
+    Request.approve(user_id: params[:user_id], booking_id: params[:booking_id] )
+    # Request.approve(user_id: params[:user_id], booking_id: params[:booking_id])
     # Collects params[:listing_id](inherently collects this in the path), session[:user].id, params[:date]
+    redirect '/requests'
   end
 
   get '/requests' do
     redirect '/login' unless session[:user]
     @received_requests = Request.find(user_id: session[:user].id)
+    # p @received_requests[2]['user_id']
     @pending_bookings = Request.all(user_id: session[:user].id)
+    
     erb :'requests/display'
   end
+
+  
 end

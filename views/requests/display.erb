@@ -42,16 +42,23 @@
         <h2>
           Received Requests:
         </h2>
+          <p><%=flash[:approval_notice]%></p>
           <%@received_requests.each do |request|%>
               <p>
-                <a href='/listings/<%= request['id'] %>/view'><%=request['title']%></a>
+                <a href='/listings/<%= request['listing_id'] %>/view'><%=request['title']%></a>
                 <br>
                 <%=request['date']%>
                 <br>
                 <%=request['username']%>
+                <form action='/requests' method = 'post'>
+                  <input type="hidden" name="user_id" value="<%=request['user_id']%>">
+                  <input type="hidden" name="booking_id" value="<%=request['booking_id']%>">
+                  <input type="submit", value ="Approve">
+                </form>
                 <br><br><br>
               </p>
           <% end %>
+          
         </div>
       </div>
     </div>
