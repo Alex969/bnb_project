@@ -6,12 +6,45 @@ def sign_up
   click_button 'Submit'
 end
 
+def sign_up_john
+  visit('/')
+  fill_in 'email', with: 'john@test.com'
+  fill_in 'username', with: 'John'
+  fill_in 'password', with: 'test123'
+  click_button 'Submit'
+
+end
+
+def sign_up_mary
+  visit('/')
+  fill_in 'email', with: 'mary@test.com'
+  fill_in 'username', with: 'Mary'
+  fill_in 'password', with: 'test123'
+  click_button 'Submit'
+
+end
+
 def log_in
   visit('/login')
   fill_in 'email', with: 'test@test.com'
   fill_in 'password', with: 'test123'
   click_button 'Submit'
 end
+
+def log_in_john
+  visit('/login')
+  fill_in 'email', with: 'john@test.com'
+  fill_in 'password', with: 'test123'
+  click_button 'Submit'
+end
+
+def log_in_mary
+  visit('/login')
+  fill_in 'email', with: 'mary@test.com'
+  fill_in 'password', with: 'test123'
+  click_button 'Submit'
+end
+
 
 def create_test_listing
   visit('/listings')

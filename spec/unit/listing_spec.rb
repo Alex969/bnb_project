@@ -5,11 +5,12 @@ require 'listing'
 describe Listing do
   describe '.create' do
     it 'should create a new Listing' do
+      user = User.sign_up(username: 'Marianne', email: 'hello@example.com', password: 'password123')
       listing = Listing.create(
         title: 'Cottage Heaven',
         description: 'My cottage in the woods',
         price_per_night: 50,
-        user_id: 1
+        user_id: user.id 
       )
       expect(listing).to be_a Listing
       expect(listing.title).to eq 'Cottage Heaven'
@@ -18,17 +19,18 @@ describe Listing do
 
   describe '.all' do
     it 'should list all listings' do
+      user = User.sign_up(username: 'Marianne', email: 'hello@example.com', password: 'password123')
       cottage_heaven = Listing.create(
         title: 'Cottage Heaven',
         description: 'My cottage in the woods',
         price_per_night: 50,
-        user_id: 1
+        user_id: user.id
       )
       cottage_hell = Listing.create(
         title: 'Cottage Hell',
         description: 'My cottage in the fire',
         price_per_night: 100,
-        user_id: 1
+        user_id: user.id
       )
       list = Listing.all
       expect(list.length).to eq 2
