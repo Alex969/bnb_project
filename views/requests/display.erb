@@ -29,6 +29,9 @@
         <h2> 
           Requests Made:
         </h2>
+        <% @pending_bookings.each do |pending_booking| %>
+        <%= pending_booking["title"] %> -- <%= pending_booking["date"] %>
+        <%end%>
       </div>
       <div class="column">
         <h2>

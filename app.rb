@@ -78,10 +78,7 @@ class BnB < Sinatra::Base
 
   post '/listings/view' do
     # Use params [:user_id] and [:booking_id] to INSERT INTO requests
-    puts "Request sent"
-    puts params[:booking_id]
-    puts params[:listing_id]
-    puts session[:user].id
+    Request.create(booking_id: params[:booking_id], user_id: session[:user].id)
     flash[:notice] = "Your booking has been requested"
     redirect "/listings/#{params[:listing_id]}/view"
   end
@@ -93,6 +90,7 @@ class BnB < Sinatra::Base
   get '/requests' do
     redirect '/login' unless session[:user]
     @received_requests = Request.find(user_id: session[:user].id)
+    @pending_bookings = Request.all(user_id: session[:user].id)
     erb :'requests/display'
   end
 end
