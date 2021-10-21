@@ -18,7 +18,7 @@
 
     <h1>
       <%= @current_listing.title %>
-    </h2>
+    </h1>
 
     <h2>
       £<%= @current_listing.price_per_night %> per night
@@ -27,8 +27,9 @@
     <p>
       <%= @current_listing.description %>
     </p>
-    <br><br>
+    <h2 style="color:red;">
     <%= flash[:notice] %>
+    </h2>
     <ul>
         <%@available_dates.each do |booking|%>
           <div class="column">

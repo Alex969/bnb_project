@@ -23,8 +23,14 @@ class BnB < Sinatra::Base
   end
 
   post '/register' do
-    User.sign_up(username: params[:username], email: params[:email], password: params[:password])
-    redirect '/login'
+    if User.unique(email: params[:email])
+      User.sign_up(username: params[:username], email: params[:email], password: params[:password])
+      session[:user] = User.login(email: params[:email], password: params[:password])
+      redirect '/listings'
+    else
+      flash[:email] = "Error: Email already exists"
+      redirect '/'
+    end
   end
 
   get '/login' do
@@ -34,7 +40,6 @@ class BnB < Sinatra::Base
   post '/login' do
     email = params[:email]
     password = params[:password]
-
     if User.authenticate(email: email, password: password)
       session[:user] = User.login(email: email, password: password)
       redirect '/listings'
@@ -55,7 +60,7 @@ class BnB < Sinatra::Base
 
   post '/listings/create' do
     listing = Listing.create(
-      title: params[:name],
+      title: params[:title],
       description: params[:description],
       price_per_night: params[:price],
       user_id: session[:user].id

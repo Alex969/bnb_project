@@ -35,4 +35,16 @@ class User
     ).first
     query['exists'] == 't'
   end
+
+  def self.unique(email:)
+    query = DatabaseConnection.query(
+      "SELECT EXISTS (
+        SELECT *
+        FROM users
+        WHERE email = $1
+      );", [email]
+    ).first
+    query['exists'] == 'f'
+  end
+
 end
