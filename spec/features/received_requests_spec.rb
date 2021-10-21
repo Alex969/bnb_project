@@ -1,0 +1,22 @@
+feature "receive requests" do
+  scenario "user who is hosting can see requests for their listings" do
+    sign_up
+    log_in
+    create_test_listing
+    sign_up_john
+    log_in_john
+    visit ("/listings")
+    click_link("Test Listing")
+    click_button('Request Booking', match: :first)
+    log_in # mr test!
+    visit("/requests")
+    expect(page).to have_content("19/10/2021")
+    expect(page).to have_content("John")
+    expect(page).to have_content("Test Listing")
+  end
+end
+
+
+
+
+ 
