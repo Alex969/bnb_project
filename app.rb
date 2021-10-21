@@ -18,7 +18,7 @@ class BnB < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get '/' do
+  get '/register' do
     erb :'auth/register'
   end
 
@@ -26,10 +26,10 @@ class BnB < Sinatra::Base
     if User.unique(email: params[:email])
       User.sign_up(username: params[:username], email: params[:email], password: params[:password])
       session[:user] = User.login(email: params[:email], password: params[:password])
-      redirect '/listings'
+      redirect '/'
     else
       flash[:email] = "Error: Email already exists"
-      redirect '/'
+      redirect '/register'
     end
   end
 
@@ -42,23 +42,23 @@ class BnB < Sinatra::Base
     password = params[:password]
     if User.authenticate(email: email, password: password)
       session[:user] = User.login(email: email, password: password)
-      redirect '/listings'
+      redirect '/'
     else
       redirect '/login'
     end
   end
 
-  get '/listings' do
+  get '/' do
     @username = session[:user].username if session[:user]
     @all_listings = Listing.all
     erb :'listings/all'
   end
 
-  get '/listings/create' do
+  get '/create' do
     erb :'listings/create'
   end
 
-  post '/listings/create' do
+  post '/create' do
     listing = Listing.create(
       title: params[:title],
       description: params[:description],
@@ -70,10 +70,10 @@ class BnB < Sinatra::Base
       avail_from: params[:avail_from],
       avail_to: params[:avail_to]
     )
-    redirect '/listings'
+    redirect '/'
   end
 
-  get '/listings/:listing_id/view' do
+  get '/:listing_id/view' do
     redirect '/login' unless session[:user]
     @current_user = session[:user]
     @current_listing = Listing.find(params[:listing_id])
@@ -81,14 +81,14 @@ class BnB < Sinatra::Base
     erb :'listings/view'
   end
 
-  post '/listings/view' do
+  post '/view' do
     # Use params [:user_id] and [:booking_id] to INSERT INTO requests
     Request.create(booking_id: params[:booking_id], user_id: session[:user].id)
     flash[:notice] = "Your booking has been requested"
-    redirect "/listings/#{params[:listing_id]}/view"
+    redirect "/#{params[:listing_id]}/view"
   end
 
-  post '/listings/:listing_id/confirm' do
+  post '/:listing_id/confirm' do
     # Collects params[:listing_id](inherently collects this in the path), session[:user].id, params[:date]
   end
 

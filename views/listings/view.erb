@@ -7,11 +7,11 @@
 
     <div class="banner">
       <div class="banner_left">
-        <a href='/'>Register</a> | 
+        <a href='/register'>Register</a> | 
         <a href='/login'>Login</a>
       </div>
       <div class="banner_right">  
-        <a href='/listings'>View all Listings</a> | 
+        <a href='/'>View all Listings</a> | 
         <a href='/requests'>View all requests</a>
       </div>
     </div>
@@ -36,7 +36,7 @@
             <%=booking.date%>
           </div>
           <div class="column">
-            <form action="/listings/view" style="text-align:left;" method="post">
+            <form action="/view" style="text-align:left;" method="post">
               <input type='hidden' name='listing_id' value='<%=@current_listing.id%>'/>
               <input type='hidden' name='booking_id' value='<%=booking.id%>'/>
          

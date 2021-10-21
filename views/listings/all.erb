@@ -1,21 +1,8 @@
 
-<head>
-  <link href="register.css" rel="stylesheet">
-</head>
-
-
 <body>
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
           <div>
-            <h3 class="float-md-start mb-0">Makers BnB</h3>
-            <nav class="nav nav-masthead justify-content-center float-md-end">
-              <a class="nav-link active" aria-current="page" href="/login">Login</a>
-              <a class="nav-link active" aria-current ="page" href="/">Register</a>
-            </nav>
-          </div>
-        </header>
-
   <div class="container mt-5">
 
   <div class="row flex-grow-1">
@@ -28,8 +15,6 @@
     </div>
   </div>
 
-
-
     <div class="row">
 
       <% @all_listings.each do |listing| %>
@@ -39,7 +24,7 @@
               <div class="card-body">
                 <h5 class="card-title"><%= listing.title %></h5>
                 <p class="card-text"><%= listing.description %> </p>
-                <a href="listings/<%=listing.id%>/view" class="btn btn-dark">More..</a>
+                <a href="<%=listing.id%>/view" class="btn btn-dark">More..</a>
               </div>
             </div>
           </div>

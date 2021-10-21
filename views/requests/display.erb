@@ -7,11 +7,11 @@
 
     <div class="banner">
       <div class="banner_left">
-        <a href='/'>Register</a> | 
+        <a href='/register'>Register</a> | 
         <a href='/login'>Login</a>
       </div>
       <div class="banner_right">  
-        <a href='/listings'>View all Listings</a> | 
+        <a href='/'>View all Listings</a> | 
         <a href='/requests'>View all requests</a>
       </div>
     </div>
@@ -31,7 +31,7 @@
         </h2>
         <% @pending_bookings.each do |pending_booking| %>
           <p>
-            <a href='/listings/<%= pending_booking['id'] %>/view'><%= pending_booking["title"] %></a>
+            <a href='/<%= pending_booking['id'] %>/view'><%= pending_booking["title"] %></a>
             <br>
             <%= pending_booking["date"] %>
             <br><br><br>
@@ -44,7 +44,7 @@
         </h2>
           <%@received_requests.each do |request|%>
               <p>
-                <a href='/listings/<%= request['id'] %>/view'><%=request['title']%></a>
+                <a href='/<%= request['id'] %>/view'><%=request['title']%></a>
                 <br>
                 <%=request['date']%>
                 <br>
