@@ -1,10 +1,8 @@
-# frozen_string_literal: true
+require 'request'
 
-require 'booking'
-
-describe Booking do
+describe Request do
   describe '.create' do
-    it 'creates a booking' do
+    it 'creates a request' do
       user = User.sign_up(
         username: 'test',
         email: 'test@test.com',
@@ -20,10 +18,10 @@ describe Booking do
       date_two = '2021-01-03'
       booking = Booking.create(listing_id: listing.id, avail_from: date_one, avail_to: date_two)
 
-      expect(booking).to be_a Array
-      expect(booking.length).to eq 3
-      expect(booking[0].date).to eq date_one
-      expect(booking[2].date).to eq date_two
+      request_one = Request.create(booking_id: booking[0].id, user_id: user.id)
+      request_two = Request.create(booking_id: booking[1].id, user_id: user.id)
+
+      expect(request_one).to be_a Request
     end
   end
 end

@@ -1,15 +1,12 @@
 feature 'Requesting booking' do
-<<<<<<< HEAD
-  xscenario 'click on an available date' do
-    visit '/listings/view'
-    click_button('Request Booking', match: :first)
-
-    expect(current_path)
-=======
   scenario 'click on an available date' do
-    visit '/listings/view'
-    click_button('Request Booking', match: :first)
+    sign_up
+    log_in
+    create_test_listing
 
->>>>>>> dc8555b1892c82870774a867c5f27d1ec799bd21
+    visit '/listings'
+    click_link 'Test Listing'
+    click_button('Request Booking', match: :first)
+    expect(page).to have_content 'Your booking has been requested'
   end
 end
