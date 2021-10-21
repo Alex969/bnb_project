@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Stewbibou/Projects/bnb_project/spec/database_connnection_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/database_connnection_spec.rb": {
         "lines": [
           1,
           null,
@@ -30,7 +30,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/features/listing_create_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/features/listing_create_spec.rb": {
         "lines": [
           1,
           1,
@@ -50,7 +50,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/features/login_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/features/login_spec.rb": {
         "lines": [
           1,
           1,
@@ -74,7 +74,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/features/register_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/features/register_spec.rb": {
         "lines": [
           1,
           1,
@@ -89,7 +89,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/features/requesting_booking_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/features/requesting_booking_spec.rb": {
         "lines": [
           1,
           1,
@@ -105,7 +105,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/features/testing_infrastructure_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/features/testing_infrastructure_spec.rb": {
         "lines": [
           1,
           1,
@@ -115,7 +115,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/features/view_listing_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/features/view_listing_spec.rb": {
         "lines": [
           1,
           1,
@@ -131,40 +131,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/unit/booking_spec.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/Stewbibou/Projects/bnb_project/spec/unit/listing_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/unit/booking_spec.rb": {
         "lines": [
           null,
           null,
@@ -178,12 +145,47 @@
           null,
           null,
           null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/unit/listing_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
           null,
           1,
           1,
           null,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -209,7 +211,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/unit/request_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/unit/request_spec.rb": {
         "lines": [
           1,
           null,
@@ -240,7 +242,7 @@
           null
         ]
       },
-      "/Users/Stewbibou/Projects/bnb_project/spec/unit/user_spec.rb": {
+      "/Users/marianneazzopardi/Desktop/Makers/group_projects/test/bnb_project/spec/unit/user_spec.rb": {
         "lines": [
           null,
           null,
@@ -286,6 +288,6 @@
         ]
       }
     },
-    "timestamp": 1634807507
+    "timestamp": 1634809958
   }
 }

@@ -13,8 +13,8 @@ class Listing
 
   def self.create(title:, description:, price_per_night:, user_id:)
     query = DatabaseConnection.query("INSERT INTO listings
-    (title, description, price_per_night) VALUES($1, $2, $3)
-    RETURNING id, title, description, price_per_night, user_id;", [title, description, price_per_night]).first
+    (title, description, price_per_night, user_id) VALUES($1, $2, $3, $4)
+    RETURNING id, title, description, price_per_night, user_id;", [title, description, price_per_night, user_id]).first
 
     Listing.new(
       id: query['id'],
