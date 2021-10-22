@@ -28,9 +28,5 @@ feature "receive requests" do
     visit("/requests")
     click_button('Approve', match: :first)
     expect(page).to have_content('Booking approved')
-  
-    # we also expect any other requests to be cancelled
-    # we also expect pending booking to now be approved
-
   end
 end
