@@ -1,37 +1,22 @@
 <!DOCTYPE html>
   <html>
-    <head>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    </head>
     <body>
-
-    <div class="banner">
-      <div class="banner_left">
-        <a href='/'>Register</a> | 
-        <a href='/login'>Login</a>
-      </div>
-      <div class="banner_right">  
-        <a href='/listings'>View all Listings</a> | 
-        <a href='/requests'>View all requests</a>
-      </div>
-    </div>
-
-      <h1>
-        Makers BnB
-      </h1>
+<div class="container">
       <h2>
-        Welcome <%= @username %>
+        <p class="fs-1">Welcome <%= @username %></p>
       </h2>
       <p>
         <a href='/listings/create'>Post a new Listing!</a>
       </p>
       <br><br>
+      <p class="fs-3">Or have a look at all the places you could be</p>
       <ul>
         <%@all_listings.each do |listing|%>
           <a href='listings/<%=listing.id%>/view'><%=listing.title%></a>
           <br><br>
         <%end%>
       </ul>
+</div>
     </body>
   </html>
   

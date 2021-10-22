@@ -40,10 +40,11 @@ class BnB < Sinatra::Base
   post '/login' do
     email = params[:email]
     password = params[:password]
-    if User.authenticate(email: email, password: password)
+    if User.login(email: email, password: password)
       session[:user] = User.login(email: email, password: password)
       redirect '/listings'
     else
+      flash[:nologin] = "Login failed, please try again."
       redirect '/login'
     end
   end
@@ -82,26 +83,22 @@ class BnB < Sinatra::Base
   end
 
   post '/listings/view' do
-    # Use params [:user_id] and [:booking_id] to INSERT INTO requests
     Request.create(booking_id: params[:booking_id], user_id: session[:user].id)
     flash[:notice] = "Your booking has been requested"
     redirect "/listings/#{params[:listing_id]}/view"
   end
 
   post '/requests' do
-    # /:booking_id/confirm'
     flash[:approval_notice] = "Booking approved"
     Request.approve(user_id: params[:user_id], booking_id: params[:booking_id] )
-    # Request.approve(user_id: params[:user_id], booking_id: params[:booking_id])
-    # Collects params[:listing_id](inherently collects this in the path), session[:user].id, params[:date]
     redirect '/requests'
   end
 
   get '/requests' do
     redirect '/login' unless session[:user]
     @received_requests = Request.find(user_id: session[:user].id)
-    # p @received_requests[2]['user_id']
     @pending_bookings = Request.all(user_id: session[:user].id)
+    @confirmed_bookings = Request.find_confirmed(user_id: session[:user].id)
     
     erb :'requests/display'
   end

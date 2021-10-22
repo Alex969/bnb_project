@@ -29,6 +29,17 @@ class Request
     query.map { |hash| hash }
   end
 
+  def self.find_confirmed(user_id:)
+    query = DatabaseConnection.query(
+      "select * from bookings 
+      inner join listings
+      on bookings.listing_id = listings.id
+      inner join users 
+      on listings.user_id = users.id
+      where bookings.user_id = $1;", [user_id]
+    )
+    query.map { |hash| hash }
+  end
 
   def self.all(user_id:)
     query = DatabaseConnection.query("SELECT listings.title, listings.id, bookings.date
