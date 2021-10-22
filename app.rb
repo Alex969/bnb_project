@@ -40,10 +40,11 @@ class BnB < Sinatra::Base
   post '/login' do
     email = params[:email]
     password = params[:password]
-    if User.authenticate(email: email, password: password)
+    if User.login(email: email, password: password)
       session[:user] = User.login(email: email, password: password)
       redirect '/listings'
     else
+      flash[:nologin] = "Login failed, please try again."
       redirect '/login'
     end
   end

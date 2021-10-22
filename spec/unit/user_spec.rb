@@ -21,19 +21,10 @@ describe User do
       expect(login).to be_a User
       expect(login.username).to eq 'Marianne'
     end
-    # Not testing for login fail due to authenticate method
-  end
-
-  describe '.authenticate' do
-    it 'authenticates on correct user' do
-      User.sign_up(username: 'Mr Test', email: 'test@example.com', password: 'password123')
-      login = User.authenticate(email: 'test@example.com', password: 'password123')
-
-      expect(login).to eq true
-    end
-
-    it "doesn't authetnicate an incorrect user" do
-      login = User.authenticate(email: 'hello@example.com', password: 'password123')
+    
+    it 'should not login with wrong user' do
+      User.sign_up(username: 'Marianne', email: 'hello@example.com', password: 'password123')
+      login = User.login(email: 'h@example.com', password: 'password123')
 
       expect(login).to eq false
     end
