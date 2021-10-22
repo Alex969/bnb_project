@@ -34,8 +34,3 @@ feature "receive requests" do
 
   end
 end
-
-
-
-
- 

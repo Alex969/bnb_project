@@ -5,6 +5,19 @@
       <p class="fs-1">Manage your bookings</p>
       <br><br>
     <div class="row">
+      <h2> 
+        Confirmed requests:
+      </h2>
+
+      <% @confirmed_bookings.each do |request| %>
+        <p>
+        <a href='/listings/<%= request['listing_id'] %>/view'><%=request['title']%></a>
+          <br>
+          <%= request["date"] %>
+          <br>
+        </p>
+      <%end%>
+
       <div class="column">
         <h2> 
           Requests Made:
