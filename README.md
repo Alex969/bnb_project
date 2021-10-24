@@ -4,11 +4,11 @@
 Contributors
 -----
 
-<a href='https://github.com/Alex969'>Stewart-Alexander ANNANI</a>  
+<a href='https://github.com/Alex969'>Alex Annani</a>  
 <a href='https://github.com/AJOsmaston'>Anthony Osmaston</a>  
-<a href='https://github.com/bernardleanse'>bernardleanse</a>  
+<a href='https://github.com/bernardleanse'>Bernard Leanse</a>  
 <a href='https://github.com/Kntanos'>Kostas Ntanos</a>  
-<a href='https://github.com/marazzo'>marazzo</a>
+<a href='https://github.com/marazzo'>Marianne Azzopardi</a>
 
 Preparation
 -----
